@@ -1,16 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+@font-face {
+  font-family: 'Segoe Script';
+  src: local('Segoe Script');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Monument Extended';
+  src: local('Monument Extended');
+  font-weight: 700;
+  font-style: normal;
+}
 
 /* ── TOKENS ── */
 :root {
   --negro:    #0a0505;
-  --borgona:  #3d0a12;
-  --borgona2: #6B1D2A;
-  --ambar:    #C4922A;
-  --amarillo: #F0C040;
+  --borgona:  #31001D;
+  --borgona2: #D800FF;
+  --ambar:    #FFC000;
+  --violeta:  #D800FF;
   --blanco:   #F5F0EB;
   --gris:     #9A8F8A;
-  --display:  'Cormorant Garamond', Georgia, serif;
-  --body:     'Inter', system-ui, sans-serif;
+  --display:  'Monument Extended', 'Bebas Neue', sans-serif;
+  --body:     'Palatino Linotype', Palatino, Georgia, serif;
+  --script:   'Segoe Script', cursive;
   --ease:     cubic-bezier(.4,0,.2,1);
 }
 
@@ -33,15 +48,25 @@ a { color: inherit; text-decoration: none; }
 /* ── TIPOGRAFÍA ── */
 h1, h2, h3, h4 {
   font-family: var(--display);
-  font-weight: 300;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.01em;
+  letter-spacing: .02em;
 }
 
 h1 { font-size: clamp(2.8rem, 7vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
 h3 { font-size: clamp(1.4rem, 3vw, 2rem); }
 h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
+
+body {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+p, li, a, span, label, input, textarea, select {
+  font-family: var(--body);
+}
 
 .eyebrow {
   font-family: var(--body);
@@ -52,9 +77,17 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   color: var(--ambar);
 }
 
-.accent { color: var(--ambar); }
-.accent-yellow { color: var(--amarillo); }
+/* Segoe Script — para frases cortas, resaltadas o decorativas */
+.script {
+  font-family: var(--script);
+  font-size: 1.2em;
+  color: var(--ambar);
+  font-weight: normal;
+}
 
+/* Acento violeta */
+.accent-violeta { color: var(--violeta); }
+.accent { color: var(--ambar); }
 /* ── LAYOUT ── */
 .container {
   width: min(1200px, 92vw);
@@ -210,6 +243,21 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   font-size: 2rem;
   cursor: pointer;
 }
+.diferencial__bg {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #00000022 0%, #ffbb00 50%, #00000022 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-momentum {
+  width: 60%;   /* ocupa el 60% del ancho del cuadrado */
+  height: auto;
+}
+
+
 
 /* ── HERO ── */
 .hero {
@@ -361,7 +409,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   font-family: var(--display);
   font-size: 3rem;
   font-weight: 300;
-  color: var(--borgona2);
+  color: var(--ambar);
   line-height: 1;
   flex-shrink: 0;
 }
@@ -403,7 +451,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .testimonio {
   background: var(--borgona);
   padding: 2.5rem;
-  border-top: 1px solid var(--borgona2);
+  border-top: 1px solid var(--blanco);
 }
 
 .testimonio__text {
@@ -561,7 +609,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .servicio-card {
   background: var(--borgona);
   padding: 2.5rem;
-  border-left: 2px solid var(--borgona2);
+  border-left: 2px solid var(--blanco);
   transition: border-color .3s var(--ease);
 }
 
@@ -589,7 +637,7 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   font-family: var(--display);
   font-size: 3.5rem;
   font-weight: 300;
-  color: var(--borgona2);
+  color: var(--ambar);
   line-height: 1;
 }
 
@@ -706,6 +754,11 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
 .form__group select option { background: var(--borgona); }
 
 /* Nosotros */
+#logo-momentum-sobrenosotros {
+  width: 300px;   /* aumentá este valor para agrandar */
+  height: auto;   /* mantiene proporción */
+}
+
 .equipo__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -737,6 +790,41 @@ h4 { font-size: clamp(1.1rem, 2vw, 1.4rem); }
   margin-bottom: 1rem;
 }
 .equipo-card p { color: var(--gris); font-size: .875rem; }
+.valores-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* mobile: uno debajo del otro */
+  gap: 2rem;
+}
+
+.valor {
+  padding: 2rem;
+  background: var(--borgona);
+  border-top: 2px solid var(--ambar);
+  color: #fff;
+}
+
+.valor h4 {
+  margin-bottom: .75rem;
+}
+
+.valor p {
+  color: var(--gris);
+  font-size: .875rem;
+}
+
+/* Solo escritorio */
+@media (min-width: 1024px) {
+  .valores-grid {
+    grid-template-columns: repeat(3, 1fr); /* tres columnas */
+    grid-template-rows: auto auto;         /* dos filas */
+  }
+
+  .criterio {
+    grid-column: 2; /* se ubica en la segunda columna */
+    grid-row: 2;    /* en la segunda fila, justo debajo de Autenticidad */
+    text-align: center;
+  }
+}
 
 /* Wine */
 .wine__experiencias {
